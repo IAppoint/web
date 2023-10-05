@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="matchpoint.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <title>MatchPoint - Holding Empresarial</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Encabezado */
+        header {
+            background-color: black;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Estilo para el submenú */
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: black;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .parent-menu:hover .submenu {
+            display: block;
+        }
+
+        /* Estilo para los elementos del submenú */
+        .submenu li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            text-align: left;
+        }
+
+        .submenu li:hover {
+            background: orange;
+        }
+
+        .submenu li:last-child {
+            border-bottom: none;
+        }
+
+        /* Barra de navegación */
+        nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 40px;
+            background: url(luxury3.png) no-repeat center bottom;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li:last-child {
+            margin-right: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        nav ul li.logo {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li.logo img {
+            max-width: 150px;
+            margin-right: 10px;
+        }
+
+        /* Sección hero */
+        .hero {
+            position: relative;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero video {
+            width: 100%;
+            height: auto;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        /* Media query para pantallas con un ancho máximo de 768px (modo móvil) */
+@media (max-width: 600px) {
+    .hero-content {
+        display: none; /* Oculta el contenido en modo móvil */
+    }
+}
+
+        .cta-button {
+            display: inline-block;
+            background-color: #f39c12;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        /* Estilos para el icono del carrito de compras */
+        .cart-icon-container {
+            position: fixed;
+            bottom: 10px;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid grey;
+            background: black;
+        }
+
+        .cart-icon {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('ICL.png') center center no-repeat;
+            background-size: cover;
+            border-radius: 50%;
+        }
+
+        .patrocinadores {
+            background-color: #f9f9f9;
+            padding: 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .patrocinadores h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+       .logos {
+            display: flex;
+            animation: scrollLogos 20s linear infinite; /* Animación de desplazamiento */
+        }
+
+        .logos img {
+            max-width: 100%; /* Hacer que las imágenes de los patrocinadores sean responsivas */
+            height: auto; /* Mantener la proporción de aspecto */
+            margin: 10px;
+        }
+
+        /* Animación de desplazamiento de los logos */
+        @keyframes scrollLogos {
+            0% {
+                transform: translateX(0); /* Comienza sin desplazamiento */
+            }
+            100% {
+                transform: translateX(-100%); /* Desplaza hacia la izquierda */
+            }
+        }
+
+         @media (max-width: 500px) {
+            nav ul li:not(.logo) {
+                display: none;
+            }
+        }
+
+
+/* Estilos para la sección de próximos eventos */
+.proximos-eventos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+/* Estilos para el contenedor de eventos */
+.eventos-container {
+    display: flex;
+    overflow: hidden;
+}
+
+/* Estilos para los eventos individuales */
+.evento {
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    text-align: center;
+    width: 250px;
+    margin: 10px;
+}
+
+.evento img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.evento h3 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+.evento p {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+/* Estilos para los controles */
+.controles {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+button {
+    background-color: orange;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:focus {
+    outline: none;
+}
+
+        .historias{
+    padding: 5px;
+}
+        .historias h3{
+    text-align:center;
+}
+
+  .story-container {
+            display: flex;
+            justify-content: center; /* Centrar horizontalmente */
+            align-items: center; /* Centrar verticalmente */
+        }
+
+        .story-bubble {
+            width: 60px;
+            height: 60px;
+            margin: 0 5px;
+            background: linear-gradient(135deg, #feda75 0%, #fa7e1e 100%);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: moveGradient 3s linear infinite alternate;
+            position: relative; /* Para posicionar el texto encima */
+        }
+
+        .story-bubble p {
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+            padding: 0;
+            font-size: 10px;
+            text-align: center;
+            width: 100%;
+        }
+
+        @keyframes moveGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .story-bubble img {
+            width: 48px;
+            height: 48px;
+            border-radius: 30px;
+        }
+
+       /* Estilos para la expansión de la historia */
+.expanded-story {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* Para centrar el contenido verticalmente */
+    z-index: 3;
+    overflow: hidden;
+}
+
+.expanded-story img {
+    max-width: 100%;
+    max-height: 80%; /* Limita la altura para mantener la proporción */
+    margin-bottom: 10px;
+}
+
+/* Estilos para el input range */
+#story-progress {
+    appearance: none; /* Oculta los estilos nativos del navegador */
+    width: 100%;
+    height: 10px;
+    background: transparent;
+    outline: none;
+}
+
+#story-progress::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 2px; /* Altura de la barra de progreso */
+    background: linear-gradient(90deg, #feda75 0%, #fa7e1e 100%);
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+#story-progress::-webkit-slider-thumb {
+    width: 20px; /* Ancho del indicador de progreso */
+    height: 20px; /* Altura del indicador de progreso */
+    background: #feda75;
+    border: 2px solid #fa7e1e;
+    border-radius: 50%;
+    cursor: pointer;
+    appearance: none; /* Oculta los estilos nativos del navegador */
+    transition: transform 0.2s; /* Efecto de escala al interactuar */
+}
+
+#story-progress:focus::-webkit-slider-thumb {
+    transform: scale(1.2); /* Efecto de escala al enfocar */
+}
+
+#close-button{
+    color:white;
+    font-weight: bolder;
+}
+
+/* Estilos para la sección "Quiénes Somos" */
+.quienes-somos {
+    background-color: #f9f9f9;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.quienes-somos-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.quienes-somos h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.quienes-somos p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Estilos para la sección de scroll */
+.scrolling-section {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 50px 0;
+    background-color: #f9f9f9;
+}
+
+/* Estilos para la imagen izquierda y derecha */
+.left-image,
+.right-image {
+    flex: 0 0 50%; /* Toma el 50% del espacio disponible en la sección */
+    transition: transform 0.3s; /* Agrega una transición suave */
+    overflow: hidden;
+}
+
+.left-image img,
+.right-image img {
+    max-width: 100%; /* Asegura que la imagen se ajuste al contenedor */
+    height: auto;
+}
+
+/* Estilos para el contenido central */
+.center-content {
+    flex: 1; /* Toma el espacio restante */
+    text-align: center;
+}
+
+.center-content h2 {
+    font-size: 24px;
+    margin: 0;
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Eventos</a></li>
+                <li><a href="#">Afterworks</a></li>
+                <li class="parent-menu">
+                    <a href="#">Shooting</a>
+                    <ul class="submenu">
+                        <li><a href="#">Teatro Magno</a></li>
+                        <li><a href="#">Fortuny</a></li>
+                        <li><a href="#">Pantera</a></li>
+                        <li><a href="#">Hotel Bless</a></li>
+                    </ul>
+                </li>
+                <li class="logo"><img src="matchpoint.png"></li>
+                <li><a href="#">Cursos</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <video autoplay loop muted playsinline>
+            <source src="event-video.mp4" type="video/mp4">
+            Tu navegador no admite la reproducción de video.
+        </video>
+        <div class="hero-content">
+            <h1>Bienvenido a MatchPoint</h1>
+            <p>Tu destino para el éxito en eventos y celebraciones.</p>
+            <a href="#" class="cta-button">Explora Nuestros Eventos</a>
+        </div>
+    </section>
+<section class="quienes-somos">
+    <div class="quienes-somos-content">
+        <h2>Quiénes Somos</h2>
+        <p>Somos MatchPoint, tu compañero confiable para eventos y celebraciones. Nuestra pasión es crear experiencias memorables para ti y tus seres queridos. Con años de experiencia en la industria de eventos, estamos comprometidos en brindarte lo mejor en planificación, diseño y ejecución de eventos.</p>
+    </div>
+</section>
+
+ <div class="historias">
+         <h3>Últimas Stories</h3>
+    <div class="story-container">
+        <div class="story-bubble" data-image="event.png">
+            <img src="event.png">
+        </div>
+        <div class="story-bubble" data-image="event2.png">
+            <img src="event2.png">
+        </div>
+        <div class="story-bubble" data-image="event3.png">
+            <img src="event3.png">
+        </div>
+        <div class="story-bubble" data-image="event4.png">
+            <img src="event4.png">
+        </div>
+    </div>
+
+</div>
+   <div class="expanded-story">
+    <input type="range" id="story-progress" min="0" max="100" step="1">
+    <span id="close-button">x</span>
+    <img src="app.png">
+</div>
+
+
+ <section class="proximos-eventos">
+        <div class="eventos-container">
+            <div class="evento">
+                <img src="event.png" alt="Evento 1">
+                <h3>Evento 1</h3>
+                <p>Descripción del Evento 1.</p>
+                <p>Fecha: 10 de octubre de 2023</p>
+            </div>
+            <div class="evento">
+                <img src="event2.png" alt="Evento 1">
+                <h3>Evento 1</h3>
+                <p>Descripción del Evento 1.</p>
+                <p>Fecha: 10 de octubre de 2023</p>
+            </div>
+            <div class="evento">
+                <img src="event3.png" alt="Evento 1">
+                <h3>Evento 1</h3>
+                <p>Descripción del Evento 1.</p>
+                <p>Fecha: 10 de octubre de 2023</p>
+            </div>
+    <div class="evento">
+                <img src="event2.png" alt="Evento 1">
+                <h3>Evento 1</h3>
+                <p>Descripción del Evento 1.</p>
+                <p>Fecha: 10 de octubre de 2023</p>
+            </div>
+        <div class="evento">
+                <img src="event4.png" alt="Evento 1">
+                <h3>Evento 1</h3>
+                <p>Descripción del Evento 1.</p>
+                <p>Fecha: 10 de octubre de 2023</p>
+            </div>
+            <div class="evento">
+                <img src="event.png" alt="Evento 1">
+                <h3>Evento 1</h3>
+                <p>Descripción del Evento 1.</p>
+                <p>Fecha: 10 de octubre de 2023</p>
+            </div>
+        </div>
+        <div class="controles">
+            <button id="anterior">Anterior</button>
+            <button id="siguiente">Siguiente</button>
+        </div>
+    </section>
+<section class="scrolling-section">
+    <div class="left-image">
+        <img src="circle2.png" alt="Imagen Izquierda">
+    </div>
+    <div class="center-content">
+        <h2>Transciende</h2>
+    </div>
+    <div class="right-image">
+        <img src="circle2.png" alt="Imagen Derecha">
+    </div>
+</section>
+
+<section class="patrocinadores">
+        <h2>Nuestros Patrocinadores</h2>
+        <div class="logos">
+            <!-- Repite tus imágenes de patrocinadores aquí -->
+            <img src="patrocinador1.png" alt="Patrocinador 1">
+            <img src="patrocinador1.png" alt="Patrocinador 2">
+            <img src="patrocinador1.png" alt="Patrocinador 3">
+            <img src="patrocinador1.png" alt="Patrocinador 4">
+            <img src="patrocinador1.png" alt="Patrocinador 5">
+            <img src="patrocinador1.png" alt="Patrocinador 6">
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 MatchPoint. Todos los derechos reservados.</p>
+    </footer>
+    <script>
+
+        const storyBubbles = document.querySelectorAll(".story-bubble");
+const expandedStory = document.querySelector(".expanded-story");
+const expandedImg = expandedStory.querySelector("img");
+const closeButton = document.getElementById("close-button");
+const storyProgress = document.getElementById("story-progress");
+
+let storyInterval;
+
+storyBubbles.forEach((bubble) => {
+    bubble.addEventListener("click", () => {
+        expandedImg.src = bubble.dataset.image;
+        expandedStory.style.display = "flex";
+        storyProgress.value = 0; // Reinicia el progreso de la historia
+        const duration = 5000; // Duración en milisegundos (5 segundos)
+        const interval = 50; // Intervalo de actualización
+        const steps = duration / interval; // Cantidad de pasos
+        let step = 0;
+
+        storyInterval = setInterval(() => {
+            storyProgress.value = (step / steps) * 100;
+            step++;
+            if (storyProgress.value >= 100) {
+                clearInterval(storyInterval); // Detiene la historia al alcanzar la duración
+                expandedStory.style.display = "none"; // Oculta la expansión
+            }
+        }, interval);
+    });
+});
+
+closeButton.addEventListener("click", () => {
+    clearInterval(storyInterval); // Detiene la historia al hacer clic en la "x"
+    expandedStory.style.display = "none"; // Oculta la expansión
+});
+
+
+        
+     document.addEventListener("DOMContentLoaded", function () {
+    const eventosContainer = document.querySelector(".eventos-container");
+    const eventos = document.querySelectorAll(".evento");
+    const anteriorButton = document.getElementById("anterior");
+    const siguienteButton = document.getElementById("siguiente");
+
+    let currentIndex = 0;
+    const eventosPorPagina = window.innerWidth < 768 ? 1 : 3;
+
+    function mostrarEventos() {
+        eventos.forEach((evento, index) => {
+            if (index >= currentIndex && index < currentIndex + eventosPorPagina) {
+                evento.style.display = "block";
+            } else {
+                evento.style.display = "none";
+            }
+        });
+    }
+
+    function avanzar() {
+        currentIndex += eventosPorPagina;
+        if (currentIndex >= eventos.length) {
+            currentIndex = 0;
+        }
+        mostrarEventos();
+    }
+
+    function retroceder() {
+        currentIndex -= eventosPorPagina;
+        if (currentIndex < 0) {
+            currentIndex = eventos.length - eventosPorPagina;
+        }
+        mostrarEventos();
+    }
+
+    mostrarEventos();
+
+    anteriorButton.addEventListener("click", retroceder);
+    siguienteButton.addEventListener("click", avanzar);
+});
+
+const scrollingSection = document.querySelector(".scrolling-section");
+const leftImage = document.querySelector(".left-image");
+const rightImage = document.querySelector(".right-image");
+
+window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+
+    // Calcula el valor de translateX para la imagen izquierda
+    const translateXLeft = `${scrollY * 0.5}px`;
+
+    // Calcula el valor de translateX para la imagen derecha con píxeles negativos
+    const translateXRight = `${-scrollY * 0.5}px`;
+
+    // Aplica los valores de translateX a las imágenes izquierda y derecha
+    leftImage.style.transform = `translateX(${translateXLeft})`;
+    rightImage.style.transform = `translateX(${translateXRight})`;
+});
+
+        
+
+    </script>
+</body>
+</html>
