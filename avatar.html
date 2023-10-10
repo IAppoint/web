@@ -51,6 +51,14 @@
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script type="module" src="GLTFLoader.js"></script>
+    <script src=".github/build/three.min.js"></script>
+<script src=".github/examples/jsm/loaders/GLTFLoader.js"></script>
+
+<script type="module">
+  import * as THREE from './.github/build/three.module.js'; // Ajusta la ruta correcta
+  import { GLTFLoader } from './.github/examples/jsm/loaders/GLTFLoader.js'; // Ajusta la ruta correcta
+</script>
+
 
     <script>
         const microphoneButton = document.getElementById('microphone');
