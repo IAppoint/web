@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Avatar Básico Three.js</title>
+    <style>
+        body { margin: 0; overflow: hidden; }
+        #canvas-container {
+            width: 100%;
+            height: 100vh; /* Esto establece la altura para ajustarse al 100% del viewport */
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Configuración de la escena, la cámara y el renderizador
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        // Creación del avatar (en este caso, un cubo)
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const avatar = new THREE.Mesh(geometry, material);
+        scene.add(avatar);
+
+        // Configuración de la posición de la cámara
+        camera.position.z = 5;
+
+        // Animación del avatar (rotación)
+        const animate = () => {
+            requestAnimationFrame(animate);
+            avatar.rotation.x += 0.01;
+            avatar.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        };
+
+        animate();
+    </script>
+</body>
+</html>
