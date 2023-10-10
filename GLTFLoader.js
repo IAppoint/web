@@ -1,8 +1,3 @@
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-
-// Resto de tu código aquí
-
 
 import {
 	AnimationClip,
