@@ -9,10 +9,64 @@
             width: 100%;
             height: 100vh; /* Esto establece la altura para ajustarse al 100% del viewport */
         }
+
+         /* Estilos para el contenedor principal */
+        .sticky-container {
+            position: sticky;
+            top: 20px; /* Ajusta la posición según tus necesidades */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f0f0f0;
+            padding: 10px;
+            z-index: 1; /* Asegura que esté por encima del contenido */
+        }
+
+        /* Estilos para los botones de altavoz y micrófono */
+        .button {
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+
+        .microphone-button.blue {
+            background-color: blue;
+            color: white;
+        }
+
+        /* Estilos para el input range */
+        input[type="range"] {
+            width: 100px;
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
     <div id="canvas-container"></div>
+    <div class="sticky-container">
+        <div class="button" id="speaker">
+            <i class="fas fa-volume-up"></i>
+            <input type="range" min="0" max="100" value="50">
+        </div>
+        <div class="button microphone-button" id="microphone">
+            <i class="fas fa-microphone"></i>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        const microphoneButton = document.getElementById('microphone');
+        let isMicrophoneOn = false;
+
+        microphoneButton.addEventListener('click', () => {
+            isMicrophoneOn = !isMicrophoneOn;
+            if (isMicrophoneOn) {
+                microphoneButton.classList.add('blue');
+            } else {
+                microphoneButton.classList.remove('blue');
+            }
+        });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         // Configuración de la escena, la cámara y el renderizador
