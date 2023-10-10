@@ -50,6 +50,7 @@
     <div id="canvas-container"></div>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="GLTFLoader.js"></script>
     <script>
         const microphoneButton = document.getElementById('microphone');
         let isMicrophoneOn = false;
@@ -69,12 +70,11 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.getElementById('canvas-container').appendChild(renderer.domElement);
 
-        // Carga el modelo de la cara humana
-        const loader = new THREE.GLTFLoader();
-        loader.load('ruta/al/modelo.glb', (gltf) => {
-            const faceModel = gltf.scene;
-            scene.add(faceModel);
-        });
+  const loader = new THREE.GLTFLoader();
+loader.load('ruta/al/modelo.glb', (gltf) => {
+    const faceModel = gltf.scene;
+    scene.add(faceModel);
+});
 
         camera.position.z = 5;
 
