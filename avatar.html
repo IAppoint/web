@@ -17,5 +17,34 @@
             <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" material="src: #background-texture"></a-plane>
         </a-scene>
     </div>
+    <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Holograma con Persona en la Pirámide Holográfica</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+</head>
+<body>
+    <div style="width: 500px; height: 600px; margin: 0 auto;">
+        <a-scene background="color: black" embedded>
+            <a-assets>
+                <img id="hologram-texture" src="ruta-de-imagen-holograma.png">
+                <img id="background-texture" src="ruta-de-imagen-fondo.jpg">
+                <a-asset-item id="person-model" src="ruta-del-modelo-persona.glb"></a-asset-item>
+            </a-assets>
+
+            <!-- Fondo -->
+            <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" material="src: #background-texture"></a-plane>
+
+            <!-- Holograma -->
+            <a-entity id="hologram" position="0 1 -3" scale="0.2 0.2 0.2" material="src: #hologram-texture"></a-entity>
+
+            <!-- Persona -->
+            <a-gltf-model src="#person-model" position="0 2 -3" rotation="0 180 0" scale="0.02 0.02 0.02"></a-gltf-model>
+        </a-scene>
+    </div>
+</body>
+</html>
+
 </body>
 </html>
