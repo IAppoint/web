@@ -2,18 +2,27 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Avatar Humanoide en A-Frame</title>
+    <title>Avatar Holograma</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
 </head>
 <body>
-    <a-scene background="color: black"> <!-- Fondo negro -->
-        <a-box position="0 0.5 -3" rotation="0 0 0" width="1" height="1" depth="1" color="#FF5733"></a-box> <!-- Color en formato hexadecimal -->
-        <a-cylinder position="0 1.25 -3" rotation="0 0 0" radius="0.5" height="1" color="blue"></a-cylinder> <!-- Color en nombre estándar -->
-        <a-cylinder position="-0.7 0.5 -3" rotation="0 0 90" radius="0.1" height="1.5" color="red"></a-cylinder>
-        <a-cylinder position="0.7 0.5 -3" rotation="0 0 90" radius="0.1" height="1.5" color="green"></a-cylinder>
-        <a-sphere position="0 2 -3" radius="0.5" color="#3498DB"></a-sphere>
-        <a-cylinder position="-0.5 -0.5 -3" rotation="0 0 90" radius="0.15" height="1" color="#FFD700"></a-cylinder>
-        <a-cylinder position="0.5 -0.5 -3" rotation="0 0 90" radius="0.15" height="1" color="white"></a-cylinder>
+    <a-scene background="color: black">
+        <!-- Fondo negro para el efecto holograma -->
+
+        <!-- Plano frontal izquierdo -->
+        <a-plane position="-1 1 -3" rotation="0 90 0" width="2" height="2" material="src: avatar1.jpg;"></a-plane>
+
+        <!-- Plano frontal derecho -->
+        <a-plane position="1 1 -3" rotation="0 -90 0" width="2" height="2" material="src: avatar2.jpg;"></a-plane>
+
+        <!-- Plano trasero izquierdo -->
+        <a-plane position="-1 -1 -3" rotation="0 90 0" width="2" height="2" material="src: avatar3.jpg;"></a-plane>
+
+        <!-- Plano trasero derecho -->
+        <a-plane position="1 -1 -3" rotation="0 -90 0" width="2" height="2" material="src: avatar4.jpg;"></a-plane>
+
+        <!-- Controlador de movimiento (por ejemplo, el cursor) -->
+        <a-cursor></a-cursor>
     </a-scene>
 </body>
 </html>
