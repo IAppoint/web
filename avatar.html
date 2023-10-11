@@ -3,22 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <title>Holograma con Persona en la Pirámide Holográfica</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        .sketchfab-embed-wrapper {
+            width: 300px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+        }
+
+        .sketchfab-embed-wrapper:nth-child(1) {
+            transform: rotate(45deg);
+            top: 0;
+        }
+
+        .sketchfab-embed-wrapper:nth-child(2) {
+            transform: rotate(90deg);
+            top: 50%;
+            right: 0;
+            transform: translate(0%, -50%);
+        }
+
+        .sketchfab-embed-wrapper:nth-child(3) {
+            transform: rotate(180deg);
+            bottom: 0;
+        }
+
+        .sketchfab-embed-wrapper:nth-child(4) {
+            left: 0;
+            top: 50%;
+            transform: translate(0%, -50%);
+        }
+    </style>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
 </head>
 <body>
-    <div style="width: 500px; height: 600px; margin: 0 auto;">
-        <a-scene background="color: black">
-            <a-assets>
-                <img id="background-texture" src="fondo.jpg">
-                <a-asset-item id="triceratops-model" src="https://cdn.aframe.io/examples/ar/models/triceratops/scene.gltf"></a-asset-item>
-            </a-assets>
-
-            <!-- Fondo -->
-            <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" material="src: #background-texture"></a-plane>
-
-            <!-- Modelo GLTF -->
-            <a-gltf-model src="#triceratops-model" position="0 0.5 -3" rotation="0 0 0" scale="0.2 0.2 0.2"></a-gltf-model>
-        </a-scene>
+    <div class="container">
+        <div class="sketchfab-embed-wrapper">
+            <iframe title="Epic" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/510c293144b340fcac5034d689991e22/embed"></iframe>
+        </div>
+        <div class="sketchfab-embed-wrapper">
+            <iframe title="Epic" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/510c293144b340fcac5034d689991e22/embed"></iframe>
+        </div>
+        <div class="sketchfab-embed-wrapper">
+            <iframe title="Epic" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/510c293144b340fcac5034d689991e22/embed"></iframe>
+        </div>
+        <div class="sketchfab-embed-wrapper">
+            <iframe title="Epic" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/510c293144b340fcac5034d689991e22/embed"></iframe>
+        </div>
     </div>
 </body>
 </html>
+
