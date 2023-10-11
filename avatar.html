@@ -1,99 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Avatar 3D Three.js</title>
-    <style>
-        body { margin: 0; overflow: hidden; }
-        #canvas-container {
-            width: 100%;
-            height: calc(100vh - 60px); /* Ajusta la altura para dejar espacio para el sticky */
-        }
-        .sticky-container {
-            position: sticky;
-            top: 0; /* Ajusta la posición según tus necesidades */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #f0f0f0;
-            padding: 10px;
-            z-index: 2; /* Asegura que esté por encima del canvas Three.js */
-        }
-        /* Estilos para los botones de altavoz y micrófono */
-        .button {
-            cursor: pointer;
-            padding: 5px;
-            border-radius: 50%;
-            background-color: #fff;
-        }
-        .microphone-button.blue {
-            background-color: blue;
-            color: white;
-        }
-        /* Estilos para el input range */
-        input[type="range"] {
-            width: 100px;
-            margin-left: 10px;
-        }
-    </style>
+    <title>Avatar Humanoide en A-Frame</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
 </head>
 <body>
-    <div class="sticky-container">
-        <div class="button" id="speaker">
-            <i class="fas fa-volume-up"></i>
-            <input type="range" min="0" max="100" value="50">
-        </div>
-        <div class="button microphone-button" id="microphone">
-            <i class="fas fa-microphone"></i>
-        </div>
-    </div>
-    <div id="canvas-container"></div>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script type="module" src="GLTFLoader.js"></script>
-    <script src=".github/build/three.min.js"></script>
-<script src=".github/examples/jsm/loaders/GLTFLoader.js"></script>
-
-<script type="module">
-  import * as THREE from './three.js/build/three.module.js'; // Ajusta la ruta correcta
-  import { GLTFLoader } from './three.js/loaders/GLTFLoader.js'; // Ajusta la ruta correcta
-</script>
-
-
-
-    <script>
-        const microphoneButton = document.getElementById('microphone');
-        let isMicrophoneOn = false;
-
-        microphoneButton.addEventListener('click', () => {
-            isMicrophoneOn = !isMicrophoneOn;
-            if (isMicrophoneOn) {
-                microphoneButton.classList.add('blue');
-            } else {
-                microphoneButton.classList.remove('blue');
-            }
-        });
-
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.getElementById('canvas-container').appendChild(renderer.domElement);
-
-  const loader = new THREE.GLTFLoader();
-loader.load('ruta/al/modelo.glb', (gltf) => {
-    const faceModel = gltf.scene;
-    scene.add(faceModel);
-});
-
-        camera.position.z = 5;
-
-        const animate = () => {
-            requestAnimationFrame(animate);
-            renderer.render(scene, camera);
-        };
-
-        animate();
-    </script>
+    <a-scene background="color: black"> <!-- Fondo negro -->
+        <!-- Vista de Pájaro: Figura ⬆️ -->
+        <a-box position="0 0.1 -3" rotation="-90 0 0" width="0.5" height="0.5" depth="0.5" color="#FF5733"></a-box>
+        
+        <!-- Vista de Pájaro: Figura ⬅️ -->
+        <a-cylinder position="-1 0.1 -3" rotation="-90 0 -90" radius="0.25" height="0.5" color="blue"></a-cylinder>
+        
+        <!-- Vista de Pájaro: Figura ➡️ -->
+        <a-cylinder position="1 0.1 -3" rotation="-90 0 90" radius="0.25" height="0.5" color="blue"></a-cylinder>
+        
+        <!-- Vista de Pájaro: Figura ⬇️ -->
+        <a-sphere position="0 0.1 -3" radius="0.25" color="red"></a-sphere>
+    </a-scene>
 </body>
 </html>
