@@ -8,47 +8,51 @@
             margin: 0;
             overflow: hidden;
         }
-
-        .mirror-container {
-            display: flex;
-            flex-direction: column;
-            width: 100vw;
-            height: 100vh;
+        canvas {
+            display: block;
         }
-
-        .mirror {
-            width: 50%;
-            height: 50%;
-            overflow: hidden;
-            position: relative;
-        }
-
     </style>
 </head>
 <body>
-    <div class="mirror-container">
-        <div class="mirror">
-            <video autoplay loop style="width:100%;height: 100%; transform: scaleX(1);">
-                <source src="avatar.mp4" type="video/mp4">
-            </video>
-        </div>
-        <div class="mirror">
-           <video autoplay loop style="width:100%;height: 100%; transform: scaleY(-1);">
-                <source src="avatar.mp4" type="video/mp4">
-            </video>
-        </div>
-       
-    <script type="module"> 
-        const videos = document.querySelectorAll('video');
+    <canvas id="mirror-canvas"></canvas>
+    <script type="module">
+        const canvas = document.getElementById('mirror-canvas');
+const ctx = canvas.getContext('2d');
 
-videos.forEach((video) => {
-    video.addEventListener('click', () => {
-        if (video.paused) {
-            video.play();
-        } else {
-            video.pause();
-        }
-    });
+// Configuración de la resolución
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// Crear un objeto de video
+const video = document.createElement('video');
+video.autoplay = true;
+video.loop = true;
+video.src = 'tu_video.mp4'; // Reemplaza con la ruta de tu video
+
+// Reflejar el video horizontalmente
+video.style.transform = 'scaleX(-1)';
+
+// Escalar y posicionar el video
+video.style.width = '100%';
+video.style.height = '100%';
+video.style.objectFit = 'cover';
+
+document.body.appendChild(video);
+
+// Función para renderizar el video reflejado en el canvas
+function renderCanvas() {
+    ctx.save();
+    ctx.scale(-1, 1); // Reflejar horizontalmente
+    ctx.drawImage(video, -canvas.width, 0, canvas.width, canvas.height);
+    ctx.restore();
+    requestAnimationFrame(renderCanvas);
+}
+
+// Escuchar el evento 'loadedmetadata' para ajustar el tamaño del canvas
+video.addEventListener('loadedmetadata', () => {
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    renderCanvas();
 });
 
     </script>
