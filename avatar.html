@@ -2,27 +2,22 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Hologram</title>
+    <title>Holograma con Persona en la Pirámide Holográfica</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
 </head>
 <body>
     <div style="width: 500px; height: 600px; margin: 0 auto;">
-        <a-scene background="color: black" embedded>
+        <a-scene background="color: black">
             <a-assets>
                 <img id="background-texture" src="fondo.jpg">
+                <a-asset-item id="triceratops-model" src="https://cdn.aframe.io/examples/ar/models/triceratops/scene.gltf"></a-asset-item>
             </a-assets>
 
             <!-- Fondo -->
             <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" material="src: #background-texture"></a-plane>
 
-            <!-- Embeber el modelo 3D de Sketchfab -->
-            <a-embed
-                type="sketchfab"
-                width="650"
-                height="480"
-                src="https://sketchfab.com/models/985dd9756d89464b9380414b5b12d8aa/embed?ui_theme=dark"
-                position="0 2 -3"
-            ></a-embed>
+            <!-- Modelo GLTF -->
+            <a-gltf-model src="#triceratops-model" position="0 0.5 -3" rotation="0 0 0" scale="0.2 0.2 0.2"></a-gltf-model>
         </a-scene>
     </div>
 </body>
