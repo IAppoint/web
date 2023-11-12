@@ -6,102 +6,107 @@
     <title>IAppoint - Tu Asistente de ventas con Inteligencia Artificial</title>
     <style>
         body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Oculta el desplazamiento en el cuerpo */
+        }
 
-.slider1,
-.slider2 {
-    text-align: center;
-    transition: opacity 0.5s ease-in-out;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        .slider-container {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden; /* Oculta el desplazamiento en el contenedor */
+        }
 
-.slider2 h1 {
-    margin: 8px;
-}
+        .slider1,
+        .slider2 {
+            text-align: center;
+            transition: opacity 0.5s ease-in-out;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.kpis {
-    display: flex;
-    justify-content: space-around;
-}
+        .slider2 h1 {
+            margin: 8px;
+        }
 
-.kpi {
-    text-align: center;
-}
+        .kpis {
+            display: flex;
+            justify-content: space-around;
+        }
 
-/* Estilos específicos para .slider1 y .slider2 */
-.slider1 {
-    background-color: #f2f2f2;
-    opacity: 1;
-}
+        .kpi {
+            text-align: center;
+        }
 
-.slider2 {
-    background-color: #ffffff;
-    opacity: 0;
-}
+        /* Estilos específicos para .slider1 y .slider2 */
+        .slider1 {
+            background-color: #f2f2f2;
+            opacity: 1;
+        }
 
+        .slider2 {
+            background-color: #ffffff;
+            opacity: 0;
+        }
     </style>
 </head>
 <body>
-   <div class="slider1">
-       <div class="slider1-box">
-            <h1>Tu Asistente de Ventas con Inteligencia Artificial</h1>
-            <h2>Descubre cómo cerrar X3 tus leads con marketing de conexión.</h2>
-       </div>
-    </div>
-
-    <div class="slider2" style="display: none;">
-       <div class="slider2-box">
-         <h1>Consigue mejorar tus KPIs principales</h1>
-        <div class="kpis">
-            <div class="kpi">
-                <h3>30%</h3>
-                <h3>Más respuestas de tus clientes potenciales</h3>
-            </div>
-            <div class="kpi">
-                <h3>25%</h3>
-                <h3>Recuperación de conversaciones</h3>
-            </div>
-            <div class="kpi">
-                <h3>15%</h3>
-                <h3>Mejores Cierres</h3>
+    <div class="slider-container">
+        <div class="slider1">
+            <div class="slider1-box">
+                <h1>Tu Asistente de Ventas con Inteligencia Artificial</h1>
+                <h2>Descubre cómo cerrar X3 tus leads con marketing de conexión.</h2>
             </div>
         </div>
+
+        <div class="slider2" style="display: none;">
+            <div class="slider2-box">
+                <h1>Consigue mejorar tus KPIs principales</h1>
+                <div class="kpis">
+                    <div class="kpi">
+                        <h3>30%</h3>
+                        <h3>Más respuestas de tus clientes potenciales</h3>
+                    </div>
+                    <div class="kpi">
+                        <h3>25%</h3>
+                        <h3>Recuperación de conversaciones</h3>
+                    </div>
+                    <div class="kpi">
+                        <h3>15%</h3>
+                        <h3>Mejores Cierres</h3>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script type="module">
         // Detectar el evento de desplazamiento de la página
-window.addEventListener('scroll', () => {
-    const slider1 = document.querySelector('.slider1');
-    const slider2 = document.querySelector('.slider2');
+        window.addEventListener('scroll', () => {
+            const slider1 = document.querySelector('.slider1');
+            const slider2 = document.querySelector('.slider2');
 
-    // Obtener la posición del slider1 en relación con la parte superior de la ventana
-    const slider1Position = slider1.getBoundingClientRect().top;
+            // Obtener la posición del slider1 en relación con la parte superior de la ventana
+            const slider1Position = slider1.getBoundingClientRect().top;
 
-    // Si el slider1 está en la parte superior de la ventana o más abajo, mostrar slider2
-    if (slider1Position <= 0) {
-        slider1.style.display = 'none';
-        slider2.style.display = 'flex';
-        setTimeout(() => {
-            slider2.style.display = 'none';
-        }, 100);
-    } else {
-        slider1.style.display = 'flex';
-        slider2.style.display = 'none';
-        setTimeout(() => {
-            slider2.style.display = 'none';
-        }, 500);
-    }
-});
-
-
+            // Si el slider1 está en la parte superior de la ventana o más abajo, mostrar slider2
+            if (slider1Position <= 0) {
+                slider1.style.display = 'none';
+                slider2.style.display = 'flex';
+                setTimeout(() => {
+                    slider2.style.display = 'none';
+                }, 100);
+            } else {
+                slider1.style.display = 'flex';
+                slider2.style.display = 'none';
+                setTimeout(() => {
+                    slider2.style.display = 'none';
+                }, 500);
+            }
+        });
     </script>
-  
 </body>
 </html>
