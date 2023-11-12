@@ -1,60 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Video Holograma</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAppoint - Tu Asistente de ventas con Inteligencia Artificial</title>
     <style>
         body {
-            margin: 0;
-            overflow: hidden;
-        }
-        canvas {
-            display: block;
-        }
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.slider1,
+.slider2 {
+    text-align: center;
+    padding: 100px 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.slider2 h1 {
+    margin-top: 30px;
+}
+
+.kpis {
+    display: flex;
+    justify-content: space-around;
+}
+
+.kpi {
+    text-align: center;
+}
+
+/* Estilos específicos para .slider1 y .slider2 */
+.slider1 {
+    background-color: #f2f2f2;
+    opacity: 1;
+}
+
+.slider2 {
+    background-color: #ffffff;
+    opacity: 0;
+}
+
     </style>
 </head>
 <body>
-    <canvas id="mirror-canvas"></canvas>
+   <div class="slider1">
+        <h1>Tu Asistente de Ventas con Inteligencia Artificial</h1>
+        <h2>Descubre cómo cerrar X3 tus leads con marketing de conexión.</h2>
+    </div>
+
+    <div class="slider2" style="display: none;">
+        <h1>Consigue mejorar tus KPIs principales</h1>
+        <div class="kpis">
+            <div class="kpi">
+                <h3>30%</h3>
+                <h3>Más respuestas de tus clientes potenciales</h3>
+            </div>
+            <div class="kpi">
+                <h3>25%</h3>
+                <h3>Recuperación de conversaciones</h3>
+            </div>
+            <div class="kpi">
+                <h3>15%</h3>
+                <h3>Mejores Cierres</h3>
+            </div>
+        </div>
+    </div>
+
     <script type="module">
-        const canvas = document.getElementById('mirror-canvas');
-const ctx = canvas.getContext('2d');
+        // Detectar el evento de desplazamiento de la página
+window.addEventListener('scroll', () => {
+    const slider1 = document.querySelector('.slider1');
+    const slider2 = document.querySelector('.slider2');
 
-// Configuración de la resolución
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+    // Obtener la posición del slider1 en relación con la parte superior de la ventana
+    const slider1Position = slider1.getBoundingClientRect().top;
 
-// Crear un objeto de video
-const video = document.createElement('video');
-video.autoplay = true;
-video.loop = true;
-video.src = 'avatar.mp4'; // Reemplaza con la ruta de tu video
-
-// Reflejar el video horizontalmente
-video.style.transform = 'scaleX(-1)';
-
-// Escalar y posicionar el video
-video.style.width = '100%';
-video.style.height = '100%';
-video.style.objectFit = 'cover';
-
-document.body.appendChild(video);
-
-// Función para renderizar el video reflejado en el canvas
-function renderCanvas() {
-    ctx.save();
-    ctx.scale(-1, 1); // Reflejar horizontalmente
-    ctx.drawImage(video, -canvas.width, 0, canvas.width, canvas.height);
-    ctx.restore();
-    requestAnimationFrame(renderCanvas);
-}
-
-// Escuchar el evento 'loadedmetadata' para ajustar el tamaño del canvas
-video.addEventListener('loadedmetadata', () => {
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    renderCanvas();
+    // Si el slider1 está en la parte superior de la ventana o más abajo, mostrar slider2
+    if (slider1Position <= 0) {
+        slider1.style.opacity = '0';
+        slider2.style.display = 'block';
+        setTimeout(() => {
+            slider2.style.opacity = '1';
+        }, 100);
+    } else {
+        slider1.style.opacity = '1';
+        slider2.style.opacity = '0';
+        setTimeout(() => {
+            slider2.style.display = 'none';
+        }, 500);
+    }
 });
 
+
     </script>
+  
 </body>
 </html>
