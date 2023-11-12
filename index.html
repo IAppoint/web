@@ -80,14 +80,14 @@ window.addEventListener('scroll', () => {
 
     // Si el slider1 está en la parte superior de la ventana o más abajo, mostrar slider2
     if (slider1Position <= 0) {
-        slider1.style.opacity = '0';
+        slider1.style.display = 'none';
         slider2.style.display = 'block';
         setTimeout(() => {
             slider2.style.opacity = '1';
         }, 100);
     } else {
-        slider1.style.opacity = '1';
-        slider2.style.opacity = '0';
+        slider1.style.display = 'block';
+        slider2.style.display = 'none';
         setTimeout(() => {
             slider2.style.display = 'none';
         }, 500);
