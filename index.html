@@ -83,30 +83,23 @@
         </div>
     </div>
 
-    <script type="module">
-        // Detectar el evento de desplazamiento de la página
-        window.addEventListener('scroll', () => {
-            const slider1 = document.querySelector('.slider1');
-            const slider2 = document.querySelector('.slider2');
+   <script type="module">
+    // Detectar el evento de desplazamiento de la página
+    window.addEventListener('scroll', () => {
+        const slider1 = document.querySelector('.slider1');
+        const slider2 = document.querySelector('.slider2');
 
-            // Obtener la posición del slider1 en relación con la parte superior de la ventana
-            const slider1Position = slider1.getBoundingClientRect().top;
+        // Obtener la posición del slider1 en relación con la parte superior de la ventana
+        const slider1Position = slider1.getBoundingClientRect().top;
 
-            // Si el slider1 está en la parte superior de la ventana o más abajo, mostrar slider2
-            if (slider1Position <= 0) {
-                slider1.style.display = 'none';
-                slider2.style.display = 'flex';
-                setTimeout(() => {
-                    slider2.style.display = 'none';
-                }, 100);
-            } else {
-                slider1.style.display = 'flex';
-                slider2.style.display = 'none';
-                setTimeout(() => {
-                    slider2.style.display = 'none';
-                }, 500);
-            }
-        });
-    </script>
+        // Calcular la opacidad en función de la posición del slider1
+        const opacity = Math.max(0, 1 - slider1Position / window.innerHeight);
+
+        // Aplicar la opacidad a los sliders
+        slider1.style.opacity = opacity;
+        slider2.style.opacity = 1 - opacity;
+    });
+</script>
+
 </body>
 </html>
